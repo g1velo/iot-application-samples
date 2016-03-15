@@ -1,18 +1,10 @@
 package com.ibm.iotf.samples.sigar;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.Scanner;
 import java.util.logging.LogManager;
-
-import org.hyperic.sigar.NetInterfaceConfig;
-import org.hyperic.sigar.Sigar;
-import org.hyperic.sigar.SigarException;
-import org.kohsuke.args4j.CmdLineException;
-import org.kohsuke.args4j.CmdLineParser;
-import org.kohsuke.args4j.Option;
 
 import com.ibm.iotf.client.app.ApplicationClient;
 import com.ibm.iotf.client.app.ApplicationStatus;
@@ -27,8 +19,7 @@ public class SigarIoTApp implements Runnable {
 	
 	private final static String PROPERTIES_FILE_NAME = "/application.properties";
 	
-	private boolean quit = false;
-	private Sigar sigar = null;
+	private volatile boolean quit = false;
 	protected ApplicationClient client;
 
 	private String deviceType;
@@ -47,7 +38,6 @@ public class SigarIoTApp implements Runnable {
 			System.exit(-1);
 		}
 		
-		this.sigar = new Sigar();
 		this.client = new ApplicationClient(props);
 		
 		/**
@@ -73,6 +63,7 @@ public class SigarIoTApp implements Runnable {
 				Thread.sleep(1000);
 			}
 			
+			System.out.println("Closing connection to the IBM Watson IoT Platform");
 			// Once told to stop, cleanly disconnect from the service
 			client.disconnect();
 		} catch (InterruptedException e) {
@@ -109,14 +100,6 @@ public class SigarIoTApp implements Runnable {
 		}
 	}
 	
-	public static class LauncherOptions {
-		@Option(name="-c", aliases={"--config"}, usage="The path to an application configuration file")
-		public String configFilePath = null;
-		
-		public LauncherOptions() {} 
-	}
-	
-	
 	public static void main(String[] args) throws Exception {
 		createShutDownHook();
 		// Load custom logging properties file
@@ -127,25 +110,9 @@ public class SigarIoTApp implements Runnable {
 		} catch (IOException e) {
 		}
 	    
-	    LauncherOptions opts = new LauncherOptions();
-        CmdLineParser parser = new CmdLineParser(opts);
-        try {
-        	parser.parseArgument(args);
-        } catch (CmdLineException e) {
-            // Handling of wrong arguments
-            System.err.println(e.getMessage());
-            parser.printUsage(System.err);
-            System.exit(1);
-        }
+	    // Start the application thread
+		SigarIoTApp a = new SigarIoTApp(PROPERTIES_FILE_NAME);
 		
-	    // Start the device thread
-		SigarIoTApp a;
-
-		if (opts.configFilePath != null) {
-			a = new SigarIoTApp(opts.configFilePath);
-		} else {
-			a = new SigarIoTApp(PROPERTIES_FILE_NAME);
-		}
 		
 		Thread t1 = new Thread(a);
 		t1.start();
@@ -157,11 +124,13 @@ public class SigarIoTApp implements Runnable {
 
 		// Wait for <enter>
 		Scanner sc = new Scanner(System.in);
-		sc.nextLine();
-		sc.close();
+		try {
+			sc.nextLine();
+			sc.close();
+		} catch(Exception e) {}
 		
 		System.out.println("Closing connection to the IBM Watson IoT Platform");
-		// Let the device thread know it can terminate
+		// Let the App thread know it can terminate
 		a.quit();
 	}
 	
