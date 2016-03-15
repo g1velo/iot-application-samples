@@ -1,9 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.ibm.messaging</groupId>
-  <artifactId>ibmiot-application-samples</artifactId>
+  <artifactId>ibmiot-sigar-sample</artifactId>
   <version>0.0.1</version>
-  <name>ibmiot-application-samples</name>
+  <name>ibmiot-sigar-sample</name>
+  
   <description>This repository contains samples for developing the application(s) in IBM Watson Internet of Things Platform</description>
   
   <url>https://github.com/ibm-messaging/iot-application-samples</url>
@@ -29,14 +30,7 @@
 
     <developers>
         <developer>
-            <name>Amit M Mangalvedkar</name>
-            <email>amitmangalvedkar@gmail.com</email>
-            <organization>IBM</organization>
-            <organizationUrl>http://www.ibm.com</organizationUrl>
-        </developer>
-        <developer>
-            <name>Sathiskumar Palaniappan</name>
-            <email>sathipal@in.ibm.com</email>
+            <name>David J Parker</name>
             <organization>IBM</organization>
             <organizationUrl>http://www.ibm.com</organizationUrl>
         </developer>
@@ -56,7 +50,6 @@
         <maven.compiler.target>1.7</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
     <dependencies>
     	<dependency>
 		    <groupId>com.ibm.messaging</groupId>
@@ -74,6 +67,11 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.fusesource</groupId>
+            <artifactId>sigar</artifactId>
+            <version>1.6.4</version>
         </dependency>
         <dependency>
             <groupId>args4j</groupId>
@@ -121,7 +119,7 @@
             <artifactId>joda-time</artifactId>
             <version>2.9.2</version>
         </dependency>
-
+		
     </dependencies>
 
     <build>
