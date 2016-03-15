@@ -53,12 +53,12 @@ You must have installed the [Eclipse Maven plugin](http://www.eclipse.org/m2e/),
 
 * Observe that the device connects to quickstart service and publishes an event every second,
 
-    Connected successfully - Your device ID is 507b9d89ebe9
-   http://quickstart.internetofthings.ibmcloud.com/?deviceId=507b9d89ebe9
-   Visit the QuickStart portal to see this device's data visualized in real time and learn more about the IBM Internet of Things Cloud
+     `Connected successfully - Your device ID is 507b9d89ebe9`
+     `http://quickstart.internetofthings.ibmcloud.com/?deviceId=507b9d89ebe9`
+     `Visit the QuickStart portal to see this device's data visualized in real time and learn more about the IBM Internet of Things Cloud`
    
-   Start publishing event every second...
-   IBM497-PC0A0Y13:/22.99/61.62/7.69
+     `Start publishing event every second...`
+     `IBM497-PC0A0Y13:/22.99/61.62/7.69`
 
 As mentioned in the output, you can view the device events, by visting the mentioned URL.
 
