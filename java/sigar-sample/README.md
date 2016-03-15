@@ -20,21 +20,6 @@ To build and run the sample, you must have the following installed:
 
 ----
 
-### Register Device in IBM Watson IoT Platform - Not required for Quickstart flow
-
-Follow the steps in [this recipe](https://developer.ibm.com/recipes/tutorials/how-to-register-devices-in-ibm-iot-foundation/) to register your device in Watson IoT Platform if not registered already. And copy the registration details, like the following,
-
-* Organization-ID = [Your Organization ID]
-* Device-Type = [Your Device Type]
-* Device-ID = [Your Device ID]
-* Authentication-Method = token
-* Authentication-Token = [Your Device Token]
-
-We need these details to connect the device to IBM Watson IoT Platform.
-
-----
-
-
 ### Build & Run the sample using Eclipse
 
 You must have installed the [Eclipse Maven plugin](http://www.eclipse.org/m2e/), to import & run the samples in eclipse. Go to the next step, if you want to run manually.
@@ -64,9 +49,9 @@ As mentioned in the output, you can view the device events, by visiting the ment
 
 **Run device sample in Registered mode**
 
-* Modify the **device.properties** file with the device registration details that you noted in the above step.
+* Modify the **device.properties** file with the device registration details. Refer to the bottom of the page if you want to know how to register a device in IBM Watson IoT Platform.
 
-* Build and run the device sample **SigarIoTDevice** by specifying the location of the device.properties file in the program arguments section, **-c <device.properties file path>**
+* Build and run the device sample **SigarIoTDevice** by specifying the location of the device.properties file in the program arguments section, **-c [device.properties file path]**
 
 * Observe that the device connects to Watson IoT Platform and publishes events. You can view the events in Watson IoT Platform dashboard. Also, we can start the application and receive the events.
 
@@ -131,7 +116,7 @@ As mentioned in the output, you can view the device events, by visiting the ment
 
 ### Running the Device sample (in Registered mode) outside Eclipse
 
-* Navigate to **target/classes** directory and modify **device.properties** file with the registration details that you noted in the previous step.
+* Navigate to **target/classes** directory and modify **device.properties** file with the device registration details. Refer to the bottom of the page if you want to know how to register a device in IBM Watson IoT Platform.
 
 * Set MAVEN_OPTS with the native library path as follows, 
 
@@ -162,5 +147,19 @@ As mentioned in the output, you can view the device events, by visiting the ment
 **Note:** If there is an Error, try extracting the ibmwiotp.jar present in target/classes directory to the same location and run again. Remember the jar must be extracted in the same location. 
 
 * Observe that the application receives all the events that are published by the device, along with the device connectivity status.
+
+----
+
+### Register Device in IBM Watson IoT Platform - Not required for Quickstart flow
+
+Follow the steps in [this recipe](https://developer.ibm.com/recipes/tutorials/how-to-register-devices-in-ibm-iot-foundation/) to register your device in Watson IoT Platform if not registered already. And copy the registration details, like the following,
+
+* Organization-ID = [Your Organization ID]
+* Device-Type = [Your Device Type]
+* Device-ID = [Your Device ID]
+* Authentication-Method = token
+* Authentication-Token = [Your Device Token]
+
+We need these details to connect the device to IBM Watson IoT Platform.
 
 ----
