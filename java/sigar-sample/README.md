@@ -126,11 +126,11 @@ As mentioned in the output, you can view the device events, by visiting the ment
     On Linux systems
     export MAVEN_OPTS="-Djava.library.path=<path-to-project-directory>\src\main\resources"
 
+* Extract ibmwiotp.jar present in target/classes directory to the same location and run again. Remember the jar must be extracted in the same location.
+
 * Run the sample using the following command,
 
     `mvn exec:java -Dexec.mainClass="com.ibm.iotf.samples.sigar.SigarIoTDevice" -Dexec.args="-c <path to the device.propertiesfile>"`
-
-**Note:** If there is an Error, try extracting the ibmwiotp.jar present in target/classes directory to the same location and run again. Remember the jar must be extracted in the same location. 
 
 * Observe that the device connects to Watson IoT Platform and publishes events. You can view the events in Watson IoT Platform dashboard. Also, we can start the application and receive the events.
 
@@ -140,11 +140,11 @@ As mentioned in the output, you can view the device events, by visiting the ment
 
 * Navigate to **target/classes** directory and modify the **application.properties** file with the Organization name, API-Key, Token and the device details.
 
+* Extract ibmwiotp.jar present in target/classes directory to the same location and run again. Remember the jar must be extracted in the same location.
+
 * Run the sample using the following command,
 
     `mvn exec:java -Dexec.mainClass=mvn exec:java -Dexec.mainClass=com.ibm.iotf.samples.sigar.SigarIoTApp"`
-
-**Note:** If there is an Error, try extracting the ibmwiotp.jar present in target/classes directory to the same location and run again. Remember the jar must be extracted in the same location. 
 
 * Observe that the application receives all the events that are published by the device, along with the device connectivity status.
 
