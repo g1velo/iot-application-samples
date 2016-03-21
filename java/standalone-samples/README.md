@@ -64,9 +64,9 @@ This will download the Java Client library for Watson IoT Platform (Currently it
 
 * Navigate to **target/classes** directory and modify **application.properties** file with the Organization Id, API-Key, Auth-Token and other necessary details. Also, specify the details of the device for which the application will subscribe to and receive events.
 
-* Extract ibmwiotp.jar present in target/classes directory to the same location and run again. Remember the jar must be extracted in the same location
+* Extract ibmwiotp.jar present in target/classes directory to the same location and run again. Remember the jar must be extracted in the same location.
 
-* Go back to the root project directoy where the POM.xml file is present and start the sample using the following command,
+* Go back to the root project directory where the POM.xml file is present and start the sample using the following command,
 
     `mvn exec:java -Dexec.mainClass="com.ibm.iotf.sample.client.application.RegisteredApplicationSubscribeSample"`
 
