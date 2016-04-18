@@ -6,6 +6,8 @@ import java.util.Properties;
 import java.util.Scanner;
 import java.util.logging.LogManager;
 
+import org.eclipse.paho.client.mqttv3.MqttException;
+
 import com.ibm.iotf.client.app.ApplicationClient;
 import com.ibm.iotf.client.app.ApplicationStatus;
 import com.ibm.iotf.client.app.Command;
@@ -53,7 +55,13 @@ public class SigarIoTApp implements Runnable {
 	
 	public void run() {
 		try {
-			client.connect();
+			try {
+				client.connect();
+			} catch (MqttException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return;
+			}
 			
 			client.setEventCallback(new MyEventCallback());
 			client.setStatusCallback(new MyStatusCallback());

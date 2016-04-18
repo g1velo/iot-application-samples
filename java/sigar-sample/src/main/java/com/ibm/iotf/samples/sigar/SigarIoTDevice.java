@@ -7,6 +7,7 @@ import java.util.Properties;
 import java.util.Scanner;
 import java.util.logging.LogManager;
 
+import org.eclipse.paho.client.mqttv3.MqttException;
 import org.hyperic.sigar.NetInterfaceConfig;
 import org.hyperic.sigar.Sigar;
 import org.hyperic.sigar.SigarException;
@@ -65,7 +66,13 @@ public class SigarIoTDevice implements Runnable {
 	
 	public void run() {
 		try {
-			client.connect();
+			try {
+				client.connect();
+			} catch (MqttException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return;
+			}
 			System.out.println("Start publishing event every second...");
 			// Send a dataset every 1 second, until we are told to quit
 			while (!quit) {
