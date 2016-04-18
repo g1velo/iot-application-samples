@@ -20,6 +20,8 @@ import java.util.Properties;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import org.eclipse.paho.client.mqttv3.MqttException;
+
 import com.ibm.iotf.client.app.ApplicationClient;
 import com.ibm.iotf.client.app.ApplicationStatus;
 import com.ibm.iotf.client.app.Command;
@@ -39,7 +41,7 @@ public class RegisteredApplicationSubscribeSample {
 
 	private ApplicationClient myClient = null;	
 	
-	public RegisteredApplicationSubscribeSample() {
+	public RegisteredApplicationSubscribeSample() throws MqttException {
 
 		/**
 		  * Load device properties
@@ -82,7 +84,7 @@ public class RegisteredApplicationSubscribeSample {
 		
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MqttException {
 		new RegisteredApplicationSubscribeSample();
 	}
 	
