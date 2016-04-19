@@ -55,7 +55,7 @@ You must have installed the [Eclipse Maven plugin](http://www.eclipse.org/m2e/),
 
     `mvn clean package`
     
-This will download the Java Client library for Watson IoT Platform (Currently its shipped as part of this sample, but soon it will be made available in maven central repository), download all required dependencies and starts the building process. Once built, the sample can be located in the target directory, for example, target\ibmiot-standalone-samples-0.0.1.jar.
+This will download the Java Client library for Watson IoT Platform and all required dependencies and starts the building process. Once built, the sample can be located in the target directory, for example, target\ibmiot-standalone-samples-0.0.1.jar.
 
 ----
 
