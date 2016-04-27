@@ -43,11 +43,11 @@ You must have installed the [Eclipse Maven plugin](http://www.eclipse.org/m2e/),
 
 ### Building the sample - Required if you want to run the samples outside of Eclipse
 
-* Clone the device-samples project using git clone as follows,
+* Clone the iot-application-samples project using git clone as follows,
    
     `git clone https://github.com/ibm-messaging/iot-application-samples`
     
-* Navigate to the device-samples project, 
+* Navigate to the standalone-samples project, 
 
     `cd iot-application-samples\java\standalone-samples`
     
