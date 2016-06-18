@@ -80,7 +80,6 @@ public class RegisteredApplicationSubscribeSample {
 		myClient.subscribeToDeviceEvents(deviceType, deviceId, "blink", "json", 0);
 		
 		myClient.subscribeToDeviceStatus(deviceType, deviceId);
-		myClient.subscribeToApplicationStatus();
 		
 	}
 
