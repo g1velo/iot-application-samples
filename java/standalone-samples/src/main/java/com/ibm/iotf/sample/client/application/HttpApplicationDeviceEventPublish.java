@@ -44,6 +44,12 @@ public class HttpApplicationDeviceEventPublish {
 			System.err.println("Not able to read the properties file, exiting..");
 			System.exit(-1);
 		}
+				
+		/**
+		 * Get the Device Type and Device Id on behalf the application will publish the event
+		 */
+		String deviceType = trimedValue(props.getProperty("Device-Type"));
+		String deviceId = trimedValue(props.getProperty("Device-ID"));
 		
 		APIClient myClient = null;
 		try {
@@ -69,7 +75,7 @@ public class HttpApplicationDeviceEventPublish {
 				event.addProperty("mem",  obj.getMemoryUsed());
 				
 				// publish the event on behalf of device
-				code = myClient.publishApplicationEventforDeviceOverHTTP("blink", event);
+				code = myClient.publishApplicationEventforDeviceOverHTTP(deviceId, deviceType, "blink", event, "bin");
 			
 				Thread.sleep(1000);
 			} catch (Exception e) {
