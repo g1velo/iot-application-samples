@@ -20,6 +20,7 @@ import java.util.Properties;
 
 import com.google.gson.JsonObject;
 import com.ibm.iotf.client.api.APIClient;
+import com.ibm.iotf.client.api.APIClient.ContentType;
 import com.ibm.iotf.client.app.ApplicationClient;
 import com.ibm.iotf.sample.client.SystemObject;
 
@@ -75,7 +76,7 @@ public class HttpApplicationDeviceEventPublish {
 				event.addProperty("mem",  obj.getMemoryUsed());
 				
 				// publish the event on behalf of device
-				code = myClient.publishApplicationEventforDeviceOverHTTP(deviceId, deviceType, "blink", event, "bin");
+				code = myClient.publishApplicationEventforDeviceOverHTTP(deviceId, deviceType, "blink", event, ContentType.json);
 			
 				Thread.sleep(1000);
 			} catch (Exception e) {
