@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.util.Properties;
 
 import com.google.gson.JsonObject;
+import com.ibm.iotf.client.api.APIClient;
+import com.ibm.iotf.client.api.APIClient.ContentType;
 import com.ibm.iotf.client.app.ApplicationClient;
 import com.ibm.iotf.sample.client.SystemObject;
 
@@ -43,25 +45,28 @@ public class HttpApplicationDeviceEventPublish {
 			System.err.println("Not able to read the properties file, exiting..");
 			System.exit(-1);
 		}
+				
+		/**
+		 * Get the Device Type and Device Id on behalf the application will publish the event
+		 */
+		String deviceType = trimedValue(props.getProperty("Device-Type"));
+		String deviceId = trimedValue(props.getProperty("Device-ID"));
 		
-		ApplicationClient myClient = null;
+		APIClient myClient = null;
 		try {
 			//Instantiate the class by passing the properties file
-			myClient = new ApplicationClient(props);
+			myClient = new APIClient(props);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(-1);
 		}
 		
-		String deviceType = trimedValue(props.getProperty("Device-Type"));
-		String deviceId = trimedValue(props.getProperty("Device-ID"));
-
 		SystemObject obj = new SystemObject();
 		/**
 		 * Publishes this process load event for every 5 second
 		 */
 		while(true) {
-			int code = 0;
+			boolean code = false;
 			try {
 				
 				//Generate a JSON object of the event to be published
@@ -71,14 +76,14 @@ public class HttpApplicationDeviceEventPublish {
 				event.addProperty("mem",  obj.getMemoryUsed());
 				
 				// publish the event on behalf of device
-				code = myClient.publishEventOverHTTP(deviceType, deviceId, "blink", event);
+				code = myClient.publishApplicationEventforDeviceOverHTTP(deviceId, deviceType, "blink", event, ContentType.json);
 			
 				Thread.sleep(1000);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
-			if(code == 200) {
+			if(code == true) {
 				System.out.println("Published the event successfully !");
 			} else {
 				System.out.println("Failed to publish the event......");
