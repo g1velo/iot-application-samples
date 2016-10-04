@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.ibm.messaging</groupId>
   <artifactId>ibmiot-application-samples</artifactId>
-  <version>0.2.1</version>
+  <version>0.2.2</version>
   <name>ibmiot-application-samples</name>
   <description>This repository contains samples for developing the application(s) in IBM Watson Internet of Things Platform</description>
   
