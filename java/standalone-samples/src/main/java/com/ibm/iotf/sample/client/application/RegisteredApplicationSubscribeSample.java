@@ -75,9 +75,9 @@ public class RegisteredApplicationSubscribeSample {
 		
 		myClient.setStatusCallback(new MyStatusCallback());
 		
-		System.out.println("Subscribing to blink events from device " + deviceId + " of type "+deviceType);
+		System.out.println("Subscribing to load events from device " + deviceId + " of type "+deviceType);
 		// Subscribe to particular device type, ID, event and format
-		myClient.subscribeToDeviceEvents(deviceType, deviceId, "blink", "json", 0);
+		myClient.subscribeToDeviceEvents(deviceType, deviceId, "load", "json", 0);
 		
 		myClient.subscribeToDeviceStatus(deviceType, deviceId);
 		
